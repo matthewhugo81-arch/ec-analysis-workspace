@@ -2,7 +2,7 @@
 
 A compact browser workspace for ECMWF forecast analysis and European weather observations.
 
-Live workspace: https://ec-analysis-workspace.matthugo81.chatgpt.site (access restricted by the owner).
+Live workspace: https://matthewhugo81-arch.github.io/ec-analysis-workspace/
 
 ## Views
 
@@ -11,7 +11,7 @@ Live workspace: https://ec-analysis-workspace.matthugo81.chatgpt.site (access re
 - PV and water vapour: forecast PV beside the latest satellite animation.
 - OPERA radar: CIRRUS radar beside infrared satellite imagery, with radar frame controls and independent image zoom and pan.
 
-Water-vapour and infrared animations include Pause / Resume controls. Pause captures the displayed frame for inspection; Resume returns to the running animation. Satellite and radar observations have independent timestamps and are not automatically synchronized with forecasts.
+Water-vapour and infrared loops use individual timestamped PNG archives, with Play/Pause, previous/next frame, timeline, Latest and Refresh controls. Pause stops the playback timer and preserves the selected observation even during refresh. Satellite and radar observations have independent timestamps and are not automatically synchronized with forecasts.
 
 ## Run locally
 
@@ -21,6 +21,7 @@ Open `index.html` in a modern browser, or serve this directory using any static 
 
 - `index.html`: interface and controls.
 - `style.css`: compact responsive layout.
+- `satellite.js`: independent WV and IR still-image playback, bounded archive loading and UTC timestamps.
 - `app.js`: forecast URLs, run alignment, radar playback, satellite pause, zoom and pan.
 
 ## Data sources
