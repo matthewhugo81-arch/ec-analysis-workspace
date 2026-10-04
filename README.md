@@ -7,7 +7,7 @@ Live workspace: https://matthewhugo81-arch.github.io/ec-analysis-workspace/
 ## Views
 
 - Four-panel analysis: 400 hPa PV, 300 hPa jet, 500 hPa geopotential, and MSLP / T850 / six-hour precipitation.
-- Run consistency: four model cycles aligned to the same valid time.
+- Run consistency: four model cycles aligned to the same valid time, with a chart selector for 400 hPa PV or MSLP / T850 / six-hour precipitation. Precipitation starts at +006h; unavailable leads are marked without shifting the shared valid time.
 - PV and water vapour: forecast PV beside the latest satellite animation.
 - OPERA radar: CIRRUS radar beside infrared satellite imagery, with radar frame controls and independent image zoom and pan.
 
