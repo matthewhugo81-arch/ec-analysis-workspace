@@ -29,3 +29,31 @@ header{padding:7px 12px;border-bottom-width:2px}.brand{gap:9px}.mark{font-size:1
 .satellite-controls{display:flex;align-items:center;gap:5px;padding:4px 8px;border-bottom:1px solid #dce6ed;flex-wrap:wrap;flex-shrink:0}.satellite-controls button{padding:4px 7px;font-size:12px}.satellite-controls input{flex:1;min-width:80px;padding:0;accent-color:#137f9e}.satellite-time{font-size:12px;white-space:nowrap;font-variant-numeric:tabular-nums}.satellite-status{font-size:12px;color:#607a8e}.satellite-status:empty{display:none}.satellite-controls button[aria-pressed=true]{background:#0f6e8a;color:#fff}
 
 #consistency-chart-control[hidden]{display:none}
+
+/* Compact desktop chrome leaves more height for the forecast charts. */
+body{height:100dvh;display:flex;flex-direction:column}
+header{padding:3px 8px;min-height:28px;gap:12px;flex-shrink:0}
+.brand{gap:7px}.mark{font-size:12px;padding:2px 4px}h1{font-size:13px}
+.region{font-size:10px;margin-left:auto;letter-spacing:1px}
+#toggle-controls{font-size:11px;line-height:16px;padding:1px 7px;background:#18354b;color:#fff;border-color:#668398;white-space:nowrap}
+#toggle-controls:hover{background:#28516b}
+main{height:auto;min-height:0;flex:1;width:100%;padding:4px 6px}
+.workspace-toolbar{padding:3px 5px;gap:6px}
+.workspace-toolbar button,.workspace-toolbar input,.workspace-toolbar select,.workspace-toolbar label,.workspace-toolbar .field-label{font-size:12px}
+.workspace-toolbar button,.workspace-toolbar input,.workspace-toolbar select{padding:3px 5px;min-height:26px}
+.workspace-toolbar .controls>label{flex-direction:row;align-items:center;gap:4px}
+.workspace-toolbar .forecast{display:flex;align-items:center;gap:4px}
+.workspace-toolbar .field-label{margin:0}
+.workspace-toolbar nav{gap:1px}.workspace-toolbar nav button{padding:4px 6px;font-size:12px}
+.forecast-timing{display:flex;align-items:center;gap:14px;flex-shrink:0;padding:3px 0}
+.timebar{padding:0;gap:14px}.timebar span{font-size:10px;letter-spacing:0}.timebar strong{font-size:12px;white-space:nowrap}
+.timebar div{gap:5px}.timebar .lead{margin-left:0}
+.timeline{flex:1;min-width:160px;gap:6px;font-size:10px}.timeline input{min-width:0;height:16px}
+.panel-head{padding:3px 7px;gap:7px}.panel h2{font-size:13px}.metadata{font-size:11px}
+.panel-head>div:first-child{gap:8px}.actions{gap:7px}.actions button{padding:2px 6px;font-size:11px}.actions a{font-size:11px}
+.grid{gap:6px}.context{font-size:11px;margin:1px 0 3px}footer{font-size:10px;margin-top:3px}
+.radar-view .forecast-timing{display:none}
+.controls-hidden .workspace-toolbar,.controls-hidden .forecast-timing,.controls-hidden .context,.controls-hidden footer{display:none}
+@media(max-width:1000px){.forecast-timing{flex-wrap:wrap;gap:3px 12px}.timeline{min-width:220px}.timebar{flex-wrap:wrap;gap:6px 12px}}
+@media(max-width:800px){body{height:auto;min-height:100dvh}header{min-height:32px}#toggle-controls{margin-left:auto;min-height:26px}main{flex:none}.workspace-toolbar button,.workspace-toolbar input,.workspace-toolbar select{min-height:30px}.forecast-timing{align-items:stretch}.timeline{flex-basis:100%}.panel-head{padding:4px 7px}.controls-hidden .panel-head{flex-wrap:wrap}.controls-hidden .metadata{font-size:10px}}
+@media(max-width:800px){.timebar{max-width:100%;min-width:0;flex-basis:100%}.workspace-toolbar nav{min-width:0}}

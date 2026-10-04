@@ -35,3 +35,5 @@ Imagery is loaded directly from providers and is not included in this repository
 ## Controls
 
 Use the shared run date, cycle and forecast lead controls for model analysis. Arrow keys step six forecast hours, or one radar observation when the radar tab is active. Radar and forecast playback operate independently. Each radar/infrared panel supports mouse-wheel zoom, drag-to-pan and Fit to restore its complete image. Satellite pause controls remain independent of radar playback.
+
+The compact toolbar combines forecast timing and the timeline on wide screens. Use Hide controls in the title bar to maximize chart space, and Show controls to restore the toolbar. Chart selection and forecast time are preserved; playback and arrow-key stepping continue to work.
