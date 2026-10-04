@@ -1,5 +1,15 @@
 const $=id=>document.getElementById(id);
 const charts=[{title:'PV · 400 hPa',base:'ecm0125_nat_gh400_pv400',ext:'png',start:0},{title:'Jet · 300 hPa',base:'ecm0125_nat_gh300_uv300',ext:'png',start:0},{title:'Geopotential · 500 hPa',base:'ecm0125_nat_gh500_gh500-1000',ext:'png',start:0},{title:'MSLP · T850 · 6h precipitation',base:'ecm0125_nat_msl_t850_6urk',ext:'jpg',start:6}];
+const consistencyCharts={
+ pv:charts[0],
+ mslp:charts[3],
+ height500:{...charts[2],title:'500 hPa height · thickness'},
+ jet300:{...charts[1],title:'300 hPa jet · height'},
+ humidity700:{title:'700 hPa humidity · vertical motion',base:'ecm0125_nat_r700_w700_uv700_gh700_gh700-1000',ext:'png',start:0}
+};
+$('consistency-chart').replaceChildren(...Object.entries(consistencyCharts).map(([value,chart])=>{
+ const option=document.createElement('option');option.value=value;option.textContent=chart.title;return option;
+}));
 let view='overview',timer=null;
 const pad=(n,size=2)=>String(n).padStart(size,'0');
 const fmt=d=>`${d.toISOString().slice(0,10)} · ${pad(d.getUTCHours())}Z`;
@@ -16,7 +26,7 @@ function panel(title,meta,src,unavailable){const article=document.createElement(
 function render(){SatelliteLoops.pauseAll();$('context').hidden=view==='consistency';$('consistency-chart-control').hidden=view!=='consistency';document.body.classList.toggle("radar-view",view==="radar");$("radar-controls").hidden=view!=="radar";if(view==="radar"){stop();renderRadar();return;}stopRadar();if(!$('date').value||!$('date').checkValidity())return;const s=state(),init=new Date(`${s.date}T${s.run}:00:00Z`);if(!Number.isFinite(init.getTime()))return;const valid=new Date(init.getTime()+s.hour*3600000);$('initialized').textContent=fmt(init);$('valid').textContent=fmt(valid);$('lead').textContent=`+${pad(s.hour,3)} hours`;$('slider').value=s.hour;$('grid').replaceChildren();$('grid').className='grid'+(view==='water'?' water':'');document.querySelectorAll('[data-step]').forEach(b=>b.disabled=s.hour+Number(b.dataset.step)<0||s.hour+Number(b.dataset.step)>240);
  if(view==='overview'){$('context').textContent='Four fields at one forecast time. Precipitation starts at +006h; its actual valid time is shown when +000h is selected.';charts.forEach(c=>{const h=Math.max(c.start,s.hour);panel(c.title,`+${pad(h,3)}h · Valid ${fmt(new Date(init.getTime()+h*3600000))}`,url(init,c,h));});}
  if(view==='consistency'){
-  const chart=$('consistency-chart').value==='mslp'?charts[3]:charts[0];
+  const chart=consistencyCharts[$('consistency-chart').value]||consistencyCharts.pv;
   $('context').textContent='';
   [0,12,24,36].forEach(back=>{
    const r=new Date(init.getTime()-back*3600000),h=s.hour+back;
