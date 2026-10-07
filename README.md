@@ -35,7 +35,7 @@ Imagery is loaded directly from providers and is not included in this repository
 
 ## Chart dates
 
-Each forecast image has a prominent valid-time strip, for example **Sat 10th Oct · 06:00 UTC**, with its model run date and forecast lead underneath. Run consistency keeps the same valid time across all four panels, while clearly identifying each earlier run. These labels remain visible with controls hidden and in expanded charts. Radar and satellite panels show their own observation dates in the same format. All labels use UTC; hovering over a date also shows the year.
+Each forecast image has a prominent valid-time strip, for example **Sat 10th Oct · 06:00 UTC**, with its model run date and forecast lead alongside in a compact row (wrapping on narrow screens). Run consistency keeps the same valid time across all four panels, while clearly identifying each earlier run. These labels remain visible with controls hidden and in expanded charts. Radar and satellite panels show their own observation dates in the same format. All labels use UTC; hovering over a date also shows the year.
 
 ## Controls
 
