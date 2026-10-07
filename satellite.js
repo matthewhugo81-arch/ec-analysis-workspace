@@ -79,14 +79,16 @@
     const reload = button('Refresh', 'Refresh satellite observations', () => void refresh(s));
     const slider = document.createElement('input'); slider.type = 'range'; slider.min = '0'; slider.max = '0'; slider.step = '1';
     slider.setAttribute('aria-label', 'Satellite observation timeline'); slider.addEventListener('input', () => select(Number(slider.value)));
-    const label = document.createElement('span'); label.className = 'satellite-time';
+    const timing = ChartDates.strip('Observed');
+    const label = timing.querySelector('.imagery-date');
     const status = document.createElement('span'); status.className = 'satellite-status'; status.setAttribute('role', 'status');
-    bar.append(slider, label, status); head.after(bar);
+    bar.append(slider, status); head.after(bar, timing);
     s.listener = () => {
       if (!img.isConnected) {pauseWithoutEmit(s); return;}
       const frame = s.frames[s.index];
       if (frame && img.getAttribute('src') !== frame.url) img.src = frame.url;
-      label.textContent = frame ? new Date(frame.epoch).toISOString().slice(0,16).replace('T', ' · ') + ' UTC' : 'Latest still · timestamp in image';
+      if (frame) ChartDates.stamp(label, frame.epoch);
+      else {label.textContent = 'Latest still · timestamp in image';label.removeAttribute('datetime');label.removeAttribute('title');}
       slider.max = String(Math.max(0, s.frames.length-1)); slider.value = String(s.index);
       slider.disabled = s.frames.length < 2;
       play.textContent = s.timer ? 'Pause' : 'Play'; play.setAttribute('aria-label', s.timer ? 'Pause satellite loop' : 'Play satellite loop');

@@ -22,6 +22,7 @@ Open `index.html` in a modern browser, or serve this directory using any static 
 - `index.html`: interface and controls.
 - `style.css`: compact responsive layout.
 - `satellite.js`: independent WV and IR still-image playback, bounded archive loading and UTC timestamps.
+- `dates.js`: shared UTC weekday, ordinal date and image timing labels.
 - `app.js`: forecast URLs, run alignment, radar playback, satellite pause, zoom and pan.
 
 ## Data sources
@@ -31,6 +32,10 @@ Open `index.html` in a modern browser, or serve this directory using any static 
 - Radar: [EUMETNET OPERA / CIRRUS](https://www.eumetnet.eu/observations/opera-radar-animation/), served by FMI.
 
 Imagery is loaded directly from providers and is not included in this repository. Provider attribution, availability, retention and usage terms apply. Older model frames may be unavailable.
+
+## Chart dates
+
+Each forecast image has a prominent valid-time strip, for example **Sat 10th Oct · 06:00 UTC**, with its model run date and forecast lead underneath. Run consistency keeps the same valid time across all four panels, while clearly identifying each earlier run. These labels remain visible with controls hidden and in expanded charts. Radar and satellite panels show their own observation dates in the same format. All labels use UTC; hovering over a date also shows the year.
 
 ## Controls
 
